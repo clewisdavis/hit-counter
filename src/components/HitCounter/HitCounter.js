@@ -4,7 +4,7 @@ import React from 'react';
 import {
   readFile,
   writeFile,
-} from '../helpers/file-helpers';
+} from '../../helpers/file-helpers';
 
 function HitCounter({isCensored, setIsCensored}) {
 
