@@ -1,12 +1,18 @@
 'use client';
 import React from 'react';
 
+import {
+  readFile,
+  writeFile,
+} from '../helpers/file-helpers';
 
+function HitCounter({isCensored, setIsCensored}) {
 
-function HitCounter({hits}) {
+  let { hits } = JSON.parse(readFile(DATABASE_PATH));
 
-  // create state
-  const [isCensored, setIsCensored] = React.useState(false);
+  hits += 1;
+
+  writeFile(DATABASE_PATH, JSON.stringify({ hits }));    
 
   return (
     <button 

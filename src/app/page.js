@@ -1,26 +1,17 @@
+'use client'
 import React from 'react';
-
-import {
-  readFile,
-  writeFile,
-} from '../helpers/file-helpers';
 
 import HitCounter from '../components/HitCounter/HitCounter';
 
-const DATABASE_PATH = '/src/database.json';
-
 function Home() {
 
-  let { hits } = JSON.parse(readFile(DATABASE_PATH));
-
-  hits += 1;
-
-  writeFile(DATABASE_PATH, JSON.stringify({ hits }));  
+  // create state
+  const [isCensored, setIsCensored] = React.useState(false);
 
   return (
     <main>
       <h1>Welcome!</h1>
-      <p>You are visitor number <HitCounter hits={hits}/>.</p>
+      <p>You are visitor number <HitCounter isCensored={isCensored} setIsCensored={setIsCensored}/>.</p>
     </main>
   );
 }
